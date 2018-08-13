@@ -1,0 +1,18 @@
+version: '2'
+services:
+  backend:
+    image: depohmel/osrm-backend
+    #build: ./osrm-backend/docker
+    expose:
+      - 5000
+    volumes:
+      - ./backend-data:/data
+  tiles:
+    image: klokantech/tileserver-gl
+    #build: ./tileserver-gl
+    ports:
+      - 8080:80
+    expose:
+      - 80
+    volumes:
+      - ./tiles-data:/data
